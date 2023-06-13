@@ -1,7 +1,5 @@
-<!--edicao.html-->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Edição de Cadastro</title>
   <style>
@@ -68,33 +66,35 @@
     <div class="profile-image">
       <img src="icon.jpg" alt="Foto do Perfil">
     </div>
-    <form method="post" action="atualizar_cadastro.php">
-      <div class="form-group">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" value="Nome atual" required>
-      </div>
-      <div class="form-group">
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" value="email@example.com" required>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Salvar Alterações">
-        <button onclick="confirmDelete()">Excluir Cadastro</button>
-        <button onclick="goBack()">Retornar</button>
-      </div>
+    <?php
+      include_once "banco_dados.php"; 
+      $id = $_GET['id'];
+      $usuario = getUsuario($id);
+    ?>
+    <form method="post" action="atualizarUsuario.php">
+      <input name="id" type="hidden" value="<?php echo $usuario['id']; ?>" />
+      <fieldset class="container">
+        <legend>Info</legend>
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" value="<?php echo $usuario['nome']; ?>">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" value="<?php echo $usuario['email']; ?>">
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" placeholder="Senha">
+        </div>
+        <br>
+        <div class="form-group">
+          <button><a href="home.php">Voltar</a></button>
+          <input type="submit" value="Atualizar">
+          <button><a href="deletarUsuario.php?id=<?php echo $id; ?>">Deletar</a></button>
+        </div>
+      </fieldset>
     </form>
   </div>
-
-  <script>
-    function confirmDelete() {
-      if (confirm("Tem certeza que deseja excluir este cadastro?")) {
-        // Adicione aqui a lógica para excluir o cadastro
-      }
-    }
-
-    function goBack() {
-      window.history.back();
-    }
-  </script>
 </body>
 </html>

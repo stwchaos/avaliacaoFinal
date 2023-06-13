@@ -1,7 +1,5 @@
-<!--Lista.html-->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Listagem de Cadastros de Pessoas</title>
   <style>
@@ -92,43 +90,27 @@
       </form>
     </div>
     <ul class="person-list">
+      <?php
+        include_once "banco_dados.php";
+        include_once "usuario.php";
+        $getUsuarios = pesquisaUsuarios("");
+        session_start();
+        $usuarioAtual = $_SESSION['usuarioAtual'];
+        foreach ($getUsuarios as $usuario) {
+      ?>
       <li>
         <div class="avatar">
           <img src="gatrocula.jpg" alt="Avatar">
         </div>
-        <h3>Gatrocula</h3>
-        <p>Idade: 367</p>
-        <p>E-mail: miaumiau@gmail.com</p>
+        <h3><?php echo $usuario['nome']; ?></h3>
+        <p>Idade: <?php echo $usuario['idade']; ?></p>
+        <p>E-mail: <?php echo $usuario['email']; ?></p>
         <div class="actions">
-          <a href="visualizar_pessoa.php?id=1">Visualizar</a>
-          <a href="editar_pessoa.php?id=1" class="edit">Editar</a>
+          <a href="visualizar_pessoa.php?id=<?php echo $usuario['id']; ?>">Visualizar</a>
+          <a href="editar_pessoa.php?id=<?php echo $usuario['id']; ?>" class="edit">Editar</a>
         </div>
       </li>
-      <li>
-        <div class="avatar">
-          <img src="innocent.png" alt="Avatar">
-        </div>
-        <h3>Maria Souza</h3>
-        <p>Idade: 25</p>
-        <p>E-mail: maria@gmail.com</p>
-        <div class="actions">
-          <a href="visualizar_pessoa.php?id=2">Visualizar</a>
-          <a href="editar_pessoa.php?id=2" class="edit">Editar</a>
-        </div>
-      </li>
-      <li>
-        <div class="avatar">
-          <img src="paisart.jpg" alt="Avatar">
-        </div>
-        <h3>Pedro Leite</h3>
-        <p>Idade: 20</p>
-        <p>E-mail: pedroleitewideos@gmail.com</p>
-        <div class="actions">
-          <a href="visualizar_pessoa.php?id=2">Visualizar</a>
-          <a href="editar_pessoa.php?id=2" class="edit">Editar</a>
-        </div>
-      </li>
-      
+      <?php } ?>
     </ul>
   </div>
 </body>

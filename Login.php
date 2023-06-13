@@ -1,7 +1,5 @@
-<!--Login.html-->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Faça seu login</title>
   <style>
@@ -62,17 +60,17 @@
 <body>
   <div class="container">
     <h2>Faça seu login</h2>
-    <form method="post" action="processar_login.php">
+    <form action="verifica_login.php" method="post">
       <div class="form-group">
         <div class="avatar">
           <img src="icon.jpg" alt="Avatar">
         </div>
-        <label for="username">Usuário:</label>
-        <input type="text" id="username" name="username" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
       </div>
       <div class="form-group">
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
       </div>
       <div class="form-group">
         <input type="submit" value="Entrar" onclick="redirectToPage()">
@@ -82,7 +80,7 @@
 
   <script>
     function redirectToPage() {
-      window.location.href = "Lista.html";
+      window.location.href = "Lista.php";
     }
   </script>
 </body>
