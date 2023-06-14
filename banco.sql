@@ -1,12 +1,5 @@
-<!--banco.sql-->
+create database web;
 
-CREATE DATABASE IF NOT EXISTS web;
+use web;
 
-USE web;
-
-CREATE TABLE IF NOT EXISTS usuario (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  senha VARCHAR(255) NOT NULL,
-  nome VARCHAR(50) NOT NULL
-);
+create table usuario ( id int primary key auto_increment, email varchar(30) not null, senha varchar(200) not null, nome varchar(20) not null);

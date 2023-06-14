@@ -1,50 +1,40 @@
-<!--usuario.php-->
-
-
 <?php 
-class Usuario{
-    private $id;
-    private $nome;
-    private $senha;
-    private $email;
+    class Usuario{
+        private $id;
+        private $nome;
+        private $senha;
+        private $email;
+        
+        function setId($id){
+            $this->id = $id;
+        }
 
-    function __construct($id, $nome, $senha, $email){
-        $this->id = $id;
-        $this->nome = $nome;
-        $this->senha = $senha;
-        $this->email = $email;
-    }
+        function getId(){
+            return $this->id;
+        }
 
-    function setId($id){
-        $this->id = $id;
-    }
+        function setNome($nome){
+            $this->nome = $nome;
+        }
 
-    function getId(){
-        return $this->id;
-    }
+        function getNome(){
+            return $this->nome;
+        }
 
-    function setNome($nome){
-        $this->nome = $nome;
-    }
+        function setSenha($senha){
+            $this->senha = $senha;
+        }
 
-    function getNome(){
-        return $this->nome;
-    }
+        function getSenha(){
+            return $this->senha;
+        }
 
-    function setSenha($senha){
-        $this->senha = $senha;
-    }
+        function setEmail($email){
+            $this->email = $email;
+        }
 
-    function getSenha(){
-        return $this->senha;
+        function getEmail(){
+            return $this->email;
+        }
     }
-
-    function setEmail($email){
-        $this->email = $email;
-    }
-
-    function getEmail(){
-        return $this->email;
-    }
-}
 ?>

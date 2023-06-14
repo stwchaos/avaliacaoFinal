@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,7 +30,6 @@
             align-items: center;
         }
 
-        input[type="text"],
         input[type="email"],
         input[type="password"] {
             width: 100%;
@@ -45,7 +44,6 @@
             text-align: center;
         }
 
-        input[type="text"]::placeholder,
         input[type="email"]::placeholder,
         input[type="password"]::placeholder {
             color: #aaa;
@@ -74,14 +72,14 @@
             cursor: pointer;
         }
 
-        .error-message {
-            color: red;
-            margin-top: 5px;
-        }
-
-        .success-message {
-            color: green;
-            margin-top: 5px;
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            background-image: url('gatrocula.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-bottom: 20px;
         }
 
         .page-title {
@@ -103,23 +101,28 @@
 <body>
     <div class="page-title">
         <img src="gatrocula.jpg" alt="Gatrocula">
-        <h1>Página de cadastro</h1>
+        <h1>Página de Login</h1>
     </div>
     <div class="container">
-        <form action="verifica_registro.php" method="post">
-            <input type="text" name="nome" placeholder="Login">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="senha" placeholder="Senha" id="senha1" onkeyup="compararSenha()">
-            <input type="password" placeholder="Confirmar senha" id="senha2" onkeyup="compararSenha()">
-            <?php if($_GET['c'] == 'true'){ $c = 'true'; } else { $c = null; } ?>
-            <input type="hidden" name="c" value="<?php echo $c; ?>">
+        <?php
+            session_start();
+            if($_SESSION != null){
+                if($_SESSION['usuarioAtual'] != null){
+                    header('Location: home.php');
+                    exit();
+                }
+            }
+        ?>
+        <form action="verifica_login.php" method="post">
+            <input type="email" name="email" placeholder="Email" required>
+            <br>
+            <input type="password" name="senha" placeholder="Senha" required>
             <br>
             <div>
-                <button style="<?php if($_GET['c'] == 'true'){ echo " visibility: hidden;"; } ?>"><a href="index.php">Logar</a></button>
-                <input disabled type="submit" value="Cadastrar" id="submit">
+                <button><a href="registro.php?c=false">Cadastrar</a></button>
+                <input type="submit" value="Entrar">
             </div>
         </form>
     </div>
-    <script src="scripts.js"></script>
 </body>
 </html>
