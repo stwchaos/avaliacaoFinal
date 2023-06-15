@@ -84,8 +84,8 @@
             $con=conectaBD();
             $sql="SELECT * FROM usuario WHERE nome LIKE ?;";
             $stm=$con->prepare($sql);
-            $nomee="%".$nome."%";
-            $stm->bindParam(1, $nomee);
+            $name="%".$nome."%";
+            $stm->bindParam(1, $name);
             $stm->execute();
             $result=$stm->fetchAll(PDO::FETCH_ASSOC);
         } catch(PDOException $e){

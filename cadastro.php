@@ -84,7 +84,7 @@
             margin-top: 5px;
         }
 
-        .page-title {
+        .logo {
             position: absolute;
             top: 20px;
             left: 20px;
@@ -92,19 +92,24 @@
             align-items: center;
         }
 
-        .page-title img {
-            width: 30px;
-            height: 30px;
+        .logo img {
+            width: 50px;
+            height: 50px;
             margin-right: 10px;
-            border-radius: 50%;
+        }
+
+        .logo h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
-    <div class="page-title">
+<div class="logo">
         <img src="gatrocula.jpg" alt="Gatrocula">
-        <h1>Página de cadastro</h1>
-    </div>
+        <h1>Cadastro de usuário</h1>
+    </div>  
     <div class="container">
     <form action="veriCad.php" method="post">
     <input type="text" name="id" placeholder="Id">

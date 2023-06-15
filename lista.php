@@ -119,15 +119,16 @@
     </style>
 </head>
 <body>
-    <div class="logo">
+<meta http-equiv="refresh" content="60" />
+<div class="logo">
         <img src="gatrocula.jpg" alt="Gatrocula">
-        <h1>Lista de usuários</h1>
-    </div>
+        <h1>Listagem de usuários</h1>
+    </div>  
     <div class="container">
         <?php 
          include_once "bancoweb.php";
          include_once "usuario.php";
-         $getUsuarios = pesquisaUsuarios("");
+         $getUsuarios = pesquisaUsuarios($_GET['p']);
          session_start();
          $usuarioAtual = $_SESSION['usuarioAtual'];
         ?>
