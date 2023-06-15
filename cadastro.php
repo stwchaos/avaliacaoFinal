@@ -107,12 +107,13 @@
     </div>
     <div class="container">
     <form action="veriCad.php" method="post">
+    <input type="text" name="id" placeholder="Id">
     <input type="text" name="nome" placeholder="Login">
     <input type="email" name="email" placeholder="Email">
     <input type="password" name="senha" placeholder="Senha" id="senha1">
     <?php if (isset($_GET['c']) && $_GET['c'] == 'true') {
-    $c = 'true';
-} else {
+         $c = 'true';
+        } else {
     $c = null;
 }
  ?>

@@ -2,15 +2,12 @@
     include_once "bancoweb.php";
     include_once "usuario.php";
 
-    $u = logar($_POST['email'], $_POST['senha']);
-    if($u==null){
+    $usuario = logar($_POST['email'], $_POST['senha']);
+    if($usuario==null){
         header('Location: index.php');
     } else {
         $usuario = new Usuario();
-        $usuario->setNome($u['nome']);
-        $usuario->setEmail($u['email']);
-        $usuario->setSenha($u['senha']); 
-        $usuario->setId($u['id']);
+        $usuario->construtor($nome, $email, $senha, $id);
         session_start();
         $_SESSION['usuarioAtual']=$usuario;
         header('Location: lista.php');

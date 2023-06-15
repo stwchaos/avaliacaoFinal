@@ -2,7 +2,7 @@
    function conectaBD()
    {
        try {
-           $con = new PDO("mysql:host=localhost;dbname=web", "root", "");
+           $con = new PDO("mysql:host=localhost;dbname=avaliacao", "root", "aluno");
            return $con;
        } catch (PDOException $e) {
            echo "Erro na conexão com o banco de dados: " . $e->getMessage();
@@ -10,19 +10,19 @@
        }
    }   
 
-    function inserirUsuario($nome, $email, $senha){
+    function inserirUsuario($nome, $email, $senha, $id){
         try{
             $con=conectaBD();
-            $sql = "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO usuario (nome, email, senha, id) VALUES (?, ?, ?, ?)";
             $stm=$con->prepare($sql);
             $stm->bindParam(1, $nome);
             $stm->bindParam(2, $email);
             $stm->bindParam(3, $senha);
+            $stm->bindParam(4, $id);
             $stm->execute();
         } catch(PDOException $e){
             echo $e->getMessage();
         }
-        return $con->lastInsertId();
     }
 
     function alterarUsuario($id, $nome, $email, $senha){

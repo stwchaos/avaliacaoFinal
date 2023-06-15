@@ -1,6 +1,6 @@
-CREATE DATABASE web;
+CREATE DATABASE avaliacao;
 
-USE web;
+USE avaliacao;
 
 CREATE TABLE usuario (
   id INT PRIMARY KEY AUTO_INCREMENT,
