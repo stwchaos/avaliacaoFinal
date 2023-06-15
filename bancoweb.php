@@ -1,8 +1,14 @@
 <?php
-    function conectaBD(){
-        $con = new PDO("mysql:host=localhost;dbname=web", "root", "");
-        return $con;
-    }
+   function conectaBD()
+   {
+       try {
+           $con = new PDO("mysql:host=localhost;dbname=web", "root", "");
+           return $con;
+       } catch (PDOException $e) {
+           echo "Erro na conexão com o banco de dados: " . $e->getMessage();
+           return null;
+       }
+   }   
 
     function inserirUsuario($nome, $email, $senha){
         try{

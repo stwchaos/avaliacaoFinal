@@ -108,18 +108,18 @@
             session_start();
             if($_SESSION != null){
                 if($_SESSION['usuarioAtual'] != null){
-                    header('Location: home.php');
+                    header('Location: lista.php');
                     exit();
                 }
             }
         ?>
-        <form action="verifica_login.php" method="post">
+        <form action="veriLogin.php" method="post">
             <input type="email" name="email" placeholder="Email" required>
             <br>
             <input type="password" name="senha" placeholder="Senha" required>
             <br>
             <div>
-                <button><a href="registro.php?c=false">Cadastrar</a></button>
+                <button><a href="cadastro.php?c=false">Cadastrar</a></button>
                 <input type="submit" value="Entrar">
             </div>
         </form>

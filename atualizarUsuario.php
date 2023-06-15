@@ -1,37 +1,31 @@
 <?php
-	include_once "banco_dados.php";
+	include_once "bancoweb.php";
 	include_once "usuario.php";
 	session_start();
 
-	$usuario = getUsuario($_POST['id']);
-	$usuarioAtual = $_SESSION['usuarioAtual'];
+	if (isset($_POST['id'])) {
+		$usuario = getUsuario($_POST['id']);
+		$usuarioAtual = isset($_SESSION['usuarioAtual']) ? $_SESSION['usuarioAtual'] : null;
 
-	if($_POST['nome']==null){
-		$nome = $usuario['nome'];
-	} else {
-		$nome = $_POST['nome'];
+		$nome = empty($_POST['nome']) ? $usuario['nome'] : $_POST['nome'];
+		$email = empty($_POST['email']) ? $usuario['email'] : $_POST['email'];
+		$senha = empty($_POST['senha']) ? $usuario['senha'] : $_POST['senha'];
+
+		if ($usuarioAtual && $usuarioAtual->getId() == $usuario['id']) {
+			if (method_exists($usuarioAtual, 'setNome')) {
+				$usuarioAtual->setNome($nome);
+			}
+			if (method_exists($usuarioAtual, 'setEmail')) {
+				$usuarioAtual->setEmail($email);
+			}
+			if (method_exists($usuarioAtual, 'setSenha')) {
+				$usuarioAtual->setSenha($senha);
+			}
+			$_SESSION['usuarioAtual'] = $usuarioAtual;
+		}
+
+		alterarUsuario($_POST['id'], $nome, $email, $senha);
 	}
 
-	if($_POST['email']==null){
-		$email = $usuario['email'];
-	} else {
-		$email = $_POST['email'];
-	}
-
-	if($_POST['senha']==null){
-		$senha = $usuario['senha'];
-	} else {
-		$senha = $_POST['senha'];
-	}
-
-	if($usuarioAtual->getId() == $usuario['id']){
-		$usuarioAtual->setNome($nome);
-		$usuarioAtual->setEmail($email);
-		$usuarioAtual->setSenha($senha); 
-		$_SESSION['usuarioAtual']=$usuarioAtual;
-	}
-
-	alterarUsuario($_POST['id'], $nome, $email, $senha);
-
-	header('Location: home.php');
+	header('Location: lista.php');
 ?>

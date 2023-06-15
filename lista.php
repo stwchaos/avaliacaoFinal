@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Lista</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -125,7 +125,7 @@
     </div>
     <div class="container">
         <?php 
-         include_once "banco_dados.php";
+         include_once "bancoweb.php";
          include_once "usuario.php";
          $getUsuarios = pesquisaUsuarios("");
          session_start();
@@ -146,13 +146,13 @@
                     <td><?php echo $usuario['id']; ?></td>
                     <td><?php echo $usuario['nome']; ?></td>
                     <td><?php echo $usuario['email']; ?></td>
-                    <td><button><a href="usuarioInfo.php?id=<?php echo $usuario['id']; ?>">Editar</a></button></td>
+                    <td><button><a href="editar.php?id=<?php echo $usuario['id']; ?>">Editar</a></button></td>
                 </tr>
                 <?php } ?>
             </table>
             <div>
-                <button><a href="logoff.php">Deslogar</a></button>
-                <button><a href="registro.php?c=true">Cadastrar</a></button>
+                <button><a href="logout.php">Deslogar</a></button>
+                <button><a href="cadastro.php?c=true">Cadastrar</a></button>
             </div>
         </fieldset>
     </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Cadastro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -106,20 +106,23 @@
         <h1>Página de cadastro</h1>
     </div>
     <div class="container">
-        <form action="verifica_registro.php" method="post">
-            <input type="text" name="nome" placeholder="Login">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="senha" placeholder="Senha" id="senha1" onkeyup="compararSenha()">
-            <input type="password" placeholder="Confirmar senha" id="senha2" onkeyup="compararSenha()">
-            <?php if($_GET['c'] == 'true'){ $c = 'true'; } else { $c = null; } ?>
-            <input type="hidden" name="c" value="<?php echo $c; ?>">
-            <br>
-            <div>
-                <button style="<?php if($_GET['c'] == 'true'){ echo " visibility: hidden;"; } ?>"><a href="index.php">Logar</a></button>
-                <input disabled type="submit" value="Cadastrar" id="submit">
-            </div>
-        </form>
+    <form action="veriCad.php" method="post">
+    <input type="text" name="nome" placeholder="Login">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="senha" placeholder="Senha" id="senha1">
+    <?php if (isset($_GET['c']) && $_GET['c'] == 'true') {
+    $c = 'true';
+} else {
+    $c = null;
+}
+ ?>
+    <input type="hidden" name="c" value="<?php echo $c; ?>">
+    <br>
+    <div>
+        <button style="<?php if($_GET['c'] == 'true'){ echo " visibility: hidden;"; } ?>"><a href="index.php">Logar</a></button>
+        <input type="submit" value="Cadastrar" id="submit">
     </div>
-    <script src="scripts.js"></script>
+</form>
+    </div>
 </body>
 </html>

@@ -114,7 +114,8 @@
     </div>    
     <div class="container">
         <?php
-        include_once "banco_dados.php"; 
+        include_once "bancoweb.php"; 
+        include_once "usuario.php";
         $id = $_GET['id'];
         $usuario = getUsuario($id);
         ?>
@@ -128,7 +129,7 @@
                 <label>Senha:</label>
                 <input name="senha" type="password" placeholder="Senha" />
                 <div>
-                    <button><a href="home.php">Voltar</a></button>
+                    <button><a href="lista.php">Voltar</a></button>
                     <input type="submit" value="Atualizar" class="button" />
                     <button><a href="deletarUsuario.php?id=<?php echo $id; ?>">Deletar</a></button>
                 </div>

@@ -1,5 +1,5 @@
 <?php
-    include_once "banco_dados.php";
+    include_once "bancoweb.php";
     include_once "usuario.php";
 
     $u = logar($_POST['email'], $_POST['senha']);
@@ -13,6 +13,6 @@
         $usuario->setId($u['id']);
         session_start();
         $_SESSION['usuarioAtual']=$usuario;
-        header('Location: home.php');
+        header('Location: lista.php');
     }
 ?>

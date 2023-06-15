@@ -1,5 +1,5 @@
 <?php
-	include_once "banco_dados.php";
+	include_once "bancoweb.php";
 	include_once "usuario.php";
 
 	if(verificarUsuario() == 'false'){
@@ -8,9 +8,9 @@
 		deletarUsuario($_GET['id']);
 		$usuario = $_SESSION['usuarioAtual'];
 		if($usuario->getId() == $_GET['id']){
-			header('Location: logoff.php');
+			header('Location: logout.php');
 		}else{
-			header('Location: home.php');
+			header('Location: lista.php');
 		}
 	}
 ?>

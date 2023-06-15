@@ -1,5 +1,10 @@
-create database web;
+CREATE DATABASE web;
 
-use web;
+USE web;
 
-create table usuario ( id int primary key auto_increment, email varchar(30) not null, senha varchar(200) not null, nome varchar(20) not null);
+CREATE TABLE usuario (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(100) NOT NULL,
+  senha VARCHAR(200) NOT NULL,
+  nome VARCHAR(20) NOT NULL
+);
